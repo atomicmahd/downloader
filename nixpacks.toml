@@ -1,16 +1,14 @@
 [phases.setup]
-nixPkgs = ["ffmpeg", "python311", "nodejs_20", "nodePackages.npm"]
+nixPkgs = ["ffmpeg", "python311", "nodejs_20"]
 
 [phases.install]
 cmds = [
-  "python3 -m pip install -r requirements.txt",
+  "python3.11 -m ensurepip && python3.11 -m pip install -r requirements.txt",
   "cd web/frontend && npm install"
 ]
 
 [phases.build]
-cmds = [
-  "cd web/frontend && npm run build"
-]
+cmds = ["cd web/frontend && npm run build"]
 
 [start]
-cmd = "python3 main.py"
+cmd = "python3.11 main.py"
